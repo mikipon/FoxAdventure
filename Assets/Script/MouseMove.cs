@@ -12,6 +12,8 @@ public class MouseMove : MonoBehaviour
     public float speed = 3.0f;
     public GameObject playerGO;
 
+    bool onTarget = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,15 +44,30 @@ public class MouseMove : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * 30.0f, Color.red, 0.0f);
 
             }
-            Debug.Log("x : " + currentPosition.x + "y : " + currentPosition.y + "z : " + currentPosition.z);
-            MovePlayer();
+            //Debug.Log("x : " + currentPosition.x + "y : " + currentPosition.y + "z : " + currentPosition.z);
+            //MovePlayer();
         }
+
+        MovePlayer();
+
     }
 
     void MovePlayer()
     {
         //playerGO.transform.Translate(currentPosition.x, currentPosition.y, currentPosition.z);
-        playerGO.transform.position = currentPosition * speed * Time.deltaTime;
+        if (currentPosition.z == playerGO.transform.position.z && currentPosition.x == playerGO.transform.position.x)
+            onTarget = true;
+        else
+            onTarget = false;
+
+        Debug.Log(onTarget.ToString());
+
+        if (onTarget)
+            playerGO.transform.position += currentPosition * speed;
+        //else
+        //    playerGO.transform.position = currentPosition;
+
+        //Debug.Log("x : " + playerGO.transform.position.x + "y : " + playerGO.transform.position.y + "z : " + playerGO.transform.position.z);
     }
 
     void OnDrawGizmos()
