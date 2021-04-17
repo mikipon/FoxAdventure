@@ -55,15 +55,20 @@ public class MouseMove : MonoBehaviour
     void MovePlayer()
     {
         //playerGO.transform.Translate(currentPosition.x, currentPosition.y, currentPosition.z);
-        if (currentPosition.z == playerGO.transform.position.z && currentPosition.x == playerGO.transform.position.x)
-            onTarget = true;
-        else
-            onTarget = false;
+        //if (currentPosition.z == playerGO.transform.position.z && currentPosition.x == playerGO.transform.position.x)
+        //    onTarget = true;
+        //else
+        //    onTarget = false;
 
-        Debug.Log(onTarget.ToString());
+        //Debug.Log(onTarget.ToString());
 
-        if (onTarget)
-            playerGO.transform.position += currentPosition * speed;
+        //if (onTarget)
+        //    playerGO.transform.position += currentPosition * speed;
+
+        var x = currentPosition.x - playerGO.transform.position.x;
+        var y = currentPosition.z - playerGO.transform.position.z;
+        playerGO.transform.position += new Vector3((x / 2) * speed, 0, (y /2) * speed);
+
         //else
         //    playerGO.transform.position = currentPosition;
 
