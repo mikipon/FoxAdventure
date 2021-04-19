@@ -5,25 +5,32 @@ using System.Linq;
 
 public class MouseMove : MonoBehaviour
 {
-
+    //メインカメラ
     private Camera mainCamera;
-    private Vector3 currentPosition = Vector3.zero;
+    //クリックした場所を保管
+    private Vector3 targetPosition = Vector3.zero;//初期化
+    //ベクトル計算用
+    float x, y;
 
-    public float speed = 3.0f;
+    //player
+    public float speed = 3.0f;//スピード
     public GameObject playerGO;
-
-    bool onTarget = false;
+    
+    //地面をクリックをしたか
+    //bool onClick = false;
+    //bool onTarget = false;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
+        //Debug.Log("最初　x : " + playerGO.transform.position.x + "y : " + playerGO.transform.position.y + "z : " + playerGO.transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             //原点
             var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -38,15 +45,22 @@ public class MouseMove : MonoBehaviour
                 var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
 
                 //3Dの座標にする（Unity凄い）
-                currentPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-                currentPosition.y = 0;
+                targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+                targetPosition.y = 0;
 
                 Debug.DrawRay(ray.origin, ray.direction * 30.0f, Color.red, 0.0f);
 
             }
-            //Debug.Log("x : " + currentPosition.x + "y : " + currentPosition.y + "z : " + currentPosition.z);
+            //Debug.Log("x : " + targetPosition.x + "y : " + targetPosition.y + "z : " + targetPosition.z);
             //MovePlayer();
+            //onClick = true;
         }
+        else
+        {
+            //onClick = false;
+        }
+
+        //Debug.Log("Move前　x : " + playerGO.transform.position.x + "y : " + playerGO.transform.position.y + "z : " + playerGO.transform.position.z);
 
         MovePlayer();
 
@@ -54,8 +68,8 @@ public class MouseMove : MonoBehaviour
 
     void MovePlayer()
     {
-        //playerGO.transform.Translate(currentPosition.x, currentPosition.y, currentPosition.z);
-        //if (currentPosition.z == playerGO.transform.position.z && currentPosition.x == playerGO.transform.position.x)
+        //playerGO.transform.Translate(targetPosition.x, targetPosition.y, targetPosition.z);
+        //if (targetPosition.z == playerGO.transform.position.z && targetPosition.x == playerGO.transform.position.x)
         //    onTarget = true;
         //else
         //    onTarget = false;
@@ -63,24 +77,31 @@ public class MouseMove : MonoBehaviour
         //Debug.Log(onTarget.ToString());
 
         //if (onTarget)
-        //    playerGO.transform.position += currentPosition * speed;
+        //    playerGO.transform.position += targetPosition * speed;
 
-        var x = currentPosition.x - playerGO.transform.position.x;
-        var y = currentPosition.z - playerGO.transform.position.z;
+        //移動するためのベクトル
+        //if (onClick)
+        //{
+        //    x = targetPosition.x - playerGO.transform.position.x;
+        //    y = targetPosition.z - playerGO.transform.position.z;
+        //}
+        x = targetPosition.x - playerGO.transform.position.x;
+        y = targetPosition.z - playerGO.transform.position.z;
+        Debug.Log("Move前　x : " + playerGO.transform.position.x + "y : " + playerGO.transform.position.y + "z : " + playerGO.transform.position.z);
         playerGO.transform.position += new Vector3((x / 2) * speed, 0, (y /2) * speed);
 
         //else
-        //    playerGO.transform.position = currentPosition;
+        //    playerGO.transform.position = targetPosition;
 
         //Debug.Log("x : " + playerGO.transform.position.x + "y : " + playerGO.transform.position.y + "z : " + playerGO.transform.position.z);
     }
 
     void OnDrawGizmos()
     {
-        if (currentPosition != Vector3.zero)
+        if (targetPosition != Vector3.zero)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(currentPosition, 0.5f);
+            Gizmos.DrawSphere(targetPosition, 0.5f);
         }
     }
 }

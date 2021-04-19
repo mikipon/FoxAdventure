@@ -64,8 +64,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Malbers Animations\Common\Scripts\Events\UnityEventRaiser.cs" />
+    <Compile Include="Assets\Malbers Animations\Common\Scripts\Readme\Readme.cs" />
     <Compile Include="Assets\Script\Animation.cs" />
+    <Compile Include="Assets\Script\FoxAnim.cs" />
     <Compile Include="Assets\Script\MouseMove.cs" />
+    <Compile Include="Assets\Script\PlayerController.cs" />
+    <Compile Include="Assets\Script\PlayerFollowCamera.cs" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Mask8Toon.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\DragonEggs_Shader.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Color4x2.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Color4x4.shader" />
+    <None Include="Assets\PolygonNature\Shaders\SyntyStudios_LOD.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Mask4Toon.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Mask4Realistic.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Golem Shader.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Fur.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Color3x3.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Color4x3.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Wind Shader.shader" />
+    <None Include="Assets\PolygonNature\Shaders\SyntyStudios_Vines.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\AnisotropicCircular.shader" />
+    <None Include="Assets\PolygonNature\Shaders\SyntyStudios_Water.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\AnisotropicWard.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\MWater2.shader" />
+    <None Include="Assets\PolygonNature\Shaders\SyntyStudios_Trees.shader" />
+    <None Include="Assets\PolygonNature\Shaders\VS_indirect.cginc" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Color4x4 v2.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Color4x2 Emission.shader" />
+    <None Include="Assets\PolygonNature\Shaders\SyntyStudios_Moss.shader" />
+    <None Include="Assets\PolygonNature\Shaders\SyntyStudios_SkyGradient.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\SimpleOutline.shader" />
+    <None Include="Assets\Malbers Animations\Common\Shaders\Mask8Realistic.shader" />
+    <None Include="Assets\Malbers Animations\Common\Fonts\OpenSans\License!.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
